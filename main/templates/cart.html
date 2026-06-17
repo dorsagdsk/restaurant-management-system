@@ -1,0 +1,80 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سبد خرید</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <style>
+    </style>
+</head>
+<body>
+    <a href="/customer-dashboard/"><i class="fas fa-arrow-left"></i> بازگشت به داشبورد</a>
+
+<div class="container">
+    <h1>سبد خرید شما</h1>
+    <ul class="cart-items" id="cart-items">
+         
+    </ul>
+
+    <div class="cart-summary">
+        <div><strong>جمع کل:</strong> <span id="total-price">0 تومان</span></div>
+    </div>
+
+    <div class="address-selection">
+        <h2>انتخاب آدرس ارسال</h2>
+        <select id="address-dropdown">
+            <option value="">لطفاً یک آدرس انتخاب کنید</option>
+        </select>
+        <button class="checkout-btn" id="place-order-btn" disabled>ثبت سفارش</button>
+        <div id="alertMessage" style="display: none;"></div>
+
+    </div>
+</div>
+
+    <script src="{% static 'js/cart.js' %}"></script>
+
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سبد خرید</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+    </style>
+</head>
+<body>
+    <a href="/customer_dashboard/"><i class="fas fa-arrow-left"></i> بازگشت به داشبورد</a>
+
+<div class="container">
+    <h1>سبد خرید شما</h1>
+    <ul class="cart-items" id="cart-items">
+        <!-- آیتم‌های سبد خرید اینجا بارگذاری خواهند شد -->
+    </ul>
+
+    <div class="cart-summary">
+        <div><strong>جمع کل:</strong> <span id="total-price">0 تومان</span></div>
+    </div>
+
+    <div class="address-selection">
+        <h2>انتخاب آدرس ارسال</h2>
+        <select id="address-dropdown">
+            <option value="">لطفاً یک آدرس انتخاب کنید</option>
+        </select>
+        <button class="checkout-btn" id="place-order-btn" disabled>ثبت سفارش</button>
+        <div id="alertMessage" style="display: none; color: red;"></div>
+    </div>
+</div>
+
+    <script src="{% static 'js/cart.js' %}"></script>
+
+</body>
+</html>

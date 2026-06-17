@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ویرایش کارمند</title>
+    <link rel="stylesheet" href="{% static 'css/edit_employee.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="employee-edit-container">
+        <h2>ویرایش کارمند</h2>
+        <form id="employee-edit-form">
+            <label for="first_name">نام:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            <label for="last_name">نام خانوادگی:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            <label for="username">نام کاربری:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="role">نقش:</label>
+            <select id="role" name="role" required>
+                <option value="admin">ادمین</option>
+                <option value="employee">کارمند</option>
+            </select>
+            <button type="submit">ذخیره تغییرات</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/edit_employee.js' %}"></script>
+</body>
+</html>

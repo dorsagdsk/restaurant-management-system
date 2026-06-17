@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به سیستم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/style_login.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+</head>
+<body>
+    <div class="login-container" dir="rtl">
+        <i class="fas fa-user-circle icon"></i>
+        <h1>ورود به سیستم</h1>
+        <form id="loginForm">
+            <label for="username" >نام کاربری</label>
+            <input type="text" id="username" name="username" placeholder="نام کاربری خود را وارد کنید" required>
+
+            <label for="password" dir="rtl">رمز عبور</label>
+            <input type="password" id="password" name="password" placeholder="رمز عبور خود را وارد کنید" required>
+
+            <button type="submit">ورود</button>
+        </form>
+        <div class="register-link">
+             <p>حساب کاربری ندارید؟</p>
+             <a href="/register_customer/" class="register-button">ثبت‌نام کنید</a>
+                    </div>
+    </div>
+
+    <script src="{% static 'js/scripts_login.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Report</title>
+    <link rel="stylesheet" href="{% static 'css/best-selling-products.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <div class="container">
+           <!-- دکمه بازگشت به صفحه قبل -->
+        <button class="back-btn" onclick="window.history.back();">
+            <i class="fas fa-arrow-left"></i> بازگشت
+        </button>
+        <h1>Best Selling Products</h1>
+
+        <table id="best-selling-products-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'js/best-selling-products.js' %}"></script>
+</body>
+</html>

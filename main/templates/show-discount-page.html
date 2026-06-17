@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت کد تخفیف‌ها</title>
+    <link rel="stylesheet" href="{% static 'css/show-discount-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+    <h1><i class="fas fa-tags"></i> مدیریت کدهای تخفیف</h1>
+    <div style="text-align: center;">
+        <button id="add_discount"><i class="fas fa-plus-circle"></i> اضافه کردن کد تخفیف</button>
+        <button id="back_button" onclick="window.history.back()">بازگشت</button>
+    </div>
+
+    <!-- جدول کدهای تخفیف -->
+    <table id="discount_table">
+        <thead>
+            <tr>
+                <th>کد تخفیف</th>
+                <th>درصد تخفیف</th>
+                <th>تاریخ انقضا</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- کدهای تخفیف در اینجا لیست می‌شوند -->
+        </tbody>
+    </table>
+
+    <!-- فرم اضافه کردن کد تخفیف -->
+    <div id="add_discount_form" style="display: none;">
+        <h2>ایجاد کد تخفیف جدید</h2>
+        <label for="code">کد تخفیف:</label>
+        <input type="text" id="code" maxlength="8" required>
+        <label for="discount_percentage">درصد تخفیف:</label>
+        <input type="number" id="discount_percentage" step="0.01" required>
+        <label for="expiration_date">تاریخ انقضا:</label>
+        <input type="datetime-local" id="expiration_date" required>
+        <div style="text-align: right;">
+            <button id="save_discount"><i class="fas fa-save"></i> ذخیره</button>
+            <button id="cancel_add"><i class="fas fa-times-circle"></i> لغو</button>
+        </div>
+    </div>
+<script src="{% static 'js/show-discount-page.js' %}"></script>
+
+</body>
+</html>

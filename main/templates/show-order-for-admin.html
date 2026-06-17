@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Report</title>
+    <link rel="stylesheet" href="{% static 'css/show-order-for-admin.css' %}">
+    <!-- اضافه کردن فونت و آیکن‌های فونت آوسام -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="container">
+                    <button onclick="window.history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+    <div id="error-message" class="error-message" style="display: none;"></div>
+
+        <!-- پیام موفقیت -->
+        <div id="success-message" class="success-message" style="display: none;"></div>
+        <header>
+            <h1><i class="fas fa-file-invoice"></i> Restaurant Orders Report</h1>
+          
+        </header>
+        <form id="date-range-form">
+            <div class="form-group">
+                <label for="start-date"><i class="fas fa-calendar-alt"></i> Start Date:</label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+                <label for="end-date"><i class="fas fa-calendar-alt"></i> End Date:</label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <button type="submit" class="submit-btn"><i class="fas fa-search"></i> Generate Report</button>
+        </form>
+
+        <div id="report-results" class="hidden">
+            <h2>Total Revenue: <span id="total-revenue"></span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                    <!-- Orders will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{% static 'js/show-order-for-admin.js' %}"></script>
+</body>
+</html>

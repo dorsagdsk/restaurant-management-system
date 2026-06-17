@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Orders</title>
+    <style>
+        .order {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .order-header {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .order-item {
+            margin-bottom: 10px;
+        }
+
+        .order-status {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .cancel-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cancel-btn:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+<h1>Your Orders</h1>
+<div id="orders-container"></div>
+<div id="orders-list"></div>
+
+<script>
+// async function loadOrders() {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//         alert('Please log in first.');
+//         window.location.href = '/login/';
+//         return;
+//     }
+
+//     try {
+//         const response = await fetch('/api/orders/', {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Token ${token}`,
+//                 'Content-Type': 'application/json',
+//             },
+//         });
+
+//         if (!response.ok) {
+//             throw new Error('Error loading orders');
+//         }
+
+//         const orders = await response.json();
+//         const ordersList = document.getElementById('orders-list');
+//         ordersList.innerHTML = ''; // Clear previous list
+
+//         orders.forEach(order => {
+//             // استخراج اطلاعات آدرس از delivery_address
+//             const address = order.delivery_address;
+//             const addressString = `${address.city}, ${address.neighborhood}, ${address.block}, ${address.postal_code}, ${address.country}`;
+            
+//             const orderItem = document.createElement('div');
+//             orderItem.innerHTML = `
+//                 <h3>Order #${order.id}</h3>
+//                 <p>Status: ${order.status}</p>
+//                 <p>Delivery Address: ${addressString}</p> <!-- نمایش آدرس -->
+//                 <p>Total Price: ${order.total_price} تومان</p>
+//                 <p>Created At: ${new Date(order.created_at).toLocaleString()}</p>
+//                 <p>Updated At: ${new Date(order.updated_at).toLocaleString()}</p>
+//                 <div>
+//                     <button ${order.status === 'confirmed' ? 'disabled' : ''} onclick="cancelOrder(${order.id})">
+//                         Cancel Order
+//                     </button>
+//                 </div>
+//             `;
+//             ordersList.appendChild(orderItem);
+//         });
+//     } catch (error) {
+//         console.error('Error loading orders:', error);
+//         alert('Error loading orders');
+//     }
+// }
+
+// async function cancelOrder(orderId) {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//         alert('Please log in first.');
+//         window.location.href = '/login/';
+//         return;
+//     }
+
+//     try {
+//         const response = await fetch(`/api/orders/${orderId}/cancel/`, {
+//             method: 'POST',
+//             headers: {
+//                 'Authorization': `Token ${token}`,
+//                 'Content-Type': 'application/json',
+//             },
+//         });
+
+//         if (!response.ok) {
+//             throw new Error('Error canceling order');
+//         }
+
+//         alert('Order canceled successfully');
+//         loadOrders();  // Reload orders after cancellation
+//     } catch (error) {
+//         console.error('Error canceling order:', error);
+//         alert('Error canceling order');
+//     }
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     loadOrders();  // Load orders when the page loads
+// });
+async function loadOrders() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert('Please log in first.');
+        window.location.href = '/login/';
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/orders/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Token ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error loading orders');
+        }
+
+        const orders = await response.json();
+        const ordersList = document.getElementById('orders-list');
+        ordersList.innerHTML = ''; // Clear previous list
+
+        orders.forEach(order => {
+            const address = order.delivery_address;
+            const addressString = `${address.city_name}, ${address.neighborhood_name}, ${address.block_number}, ${address.postal_code}, ${address.country_name}`;
+
+            const orderItem = document.createElement('div');
+            orderItem.innerHTML = `
+                <h3>Order #${order.id}</h3>
+                <p>Status: ${order.order_status}</p>
+                <p>Delivery Address: ${addressString}</p>
+                <p>Total Price: ${order.total_price} تومان</p>
+                <p>Created At: ${new Date(order.order_created_on).toLocaleString()}</p>
+                <p>Updated At: ${new Date(order.order_updated_on).toLocaleString()}</p>
+                <div>
+                    <button ${order.order_status === 'confirmed' ? 'disabled' : ''} onclick="cancelOrder(${order.id})">
+                        Cancel Order
+                    </button>
+                </div>
+                <div>
+                    <h4>Order Items:</h4>
+                    <ul>
+                        ${order.order_items.map(item => `
+                            <li>
+                                ${item.ordered_menu_item.name} - Quantity: ${item.ordered_quantity} - Price: 
+                                ${item.ordered_menu_item.item_price * item.ordered_quantity} تومان
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+            ordersList.appendChild(orderItem);
+        });
+    } catch (error) {
+        console.error('Error loading orders:', error);
+        alert('Error loading orders');
+    }
+}
+
+async function cancelOrder(orderId) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert('Please log in first.');
+        window.location.href = '/login/';
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/orders/${orderId}/cancel/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Token ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error canceling order');
+        }
+
+        alert('Order canceled successfully');
+        loadOrders();  // Reload orders after cancellation
+    } catch (error) {
+        console.error('Error canceling order:', error);
+        alert('Error canceling order');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadOrders();  // Load orders when the page loads
+});
+
+</script>
+</body>
+</html>

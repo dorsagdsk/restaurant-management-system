@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>پروفایل مشتری</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<header>
+    <a href="/customer_dashboard/"><i class="fas fa-arrow-left"></i> بازگشت به داشبورد</a>
+    <h1>پروفایل مشتری</h1>
+</header>
+
+<div class="profile-container">
+    <h2>اطلاعات کاربر</h2>
+    <div id="profile-info">
+        <!-- اطلاعات از API پر می‌شود -->
+        <p><strong>نام کاربری:</strong> <span id="username"></span></p>
+        <p><strong>نام:</strong> <span id="first_name"></span></p>
+        <p><strong>نام خانوادگی:</strong> <span id="last_name"></span></p>
+        <p><strong>ایمیل:</strong> <span id="email"></span></p>
+        <p><strong>شماره تماس:</strong> <span id="phone_number"></span></p>
+        <div class="addresses-container">
+    <h3>آدرس‌های شما</h3>
+   <div class="addresses-container">
+    <h3>آدرس‌های شما</h3>
+    <ul id="addresses-list">
+        <!-- آدرس‌ها در اینجا نمایش داده می‌شوند -->
+    </ul>
+    <button id="add-address-btn">اضافه کردن آدرس جدید</button>
+    
+    <!-- فرم اضافه کردن آدرس جدید -->
+    <div id="add-address-form" style="display: none;">
+        <h4>آدرس جدید</h4>
+        <form id="address-form">
+            <label for="city">شهر:</label>
+            <input type="text" id="city" name="city" required><br>
+            
+            <label for="neighborhood">محله:</label>
+            <input type="text" id="neighborhood" name="neighborhood" required><br>
+            
+            <label for="block">بلوک:</label>
+            <input type="text" id="block" name="block" required><br>
+            
+            <label for="postal_code">کد پستی:</label>
+            <input type="text" id="postal_code" name="postal_code" required><br>
+            
+            <label for="country">کشور:</label>
+            <input type="text" id="country" name="country" required><br>
+            
+            <button type="submit">ثبت آدرس</button>
+        </form>
+    </div>
+</div>
+</div>
+
+    </div>
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

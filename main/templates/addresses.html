@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام آدرس‌ها</title>
+        <link rel="stylesheet" href="{% static 'css/adress.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>ثبت آدرس‌ها</h2>
+    <div id="addressContainer">
+        <div class="address-group">
+            <label for="city">شهر</label>
+            <input type="text" class="city" name="city[]" required>
+            <label for="neighborhood">محله</label>
+            <input type="text" class="neighborhood" name="neighborhood[]" required>
+            <label for="block">پلاک</label>
+            <input type="text" class="block" name="block[]" required>
+            <label for="postal_code">کد پستی</label>
+            <input type="text" class="postal_code" name="postal_code[]" required>
+            <label for="country">کشور</label>
+            <input type="text" class="country" name="country[]" required>
+        </div>
+    </div>
+
+    <!-- دکمه اضافه کردن آدرس جدید -->
+    <button type="button" id="addAddressBtn" class="btn">اضافه کردن آدرس جدید</button>
+
+    <!-- دکمه ثبت آدرس‌ها -->
+    <button type="submit" id="saveButton" class="btn">ثبت آدرس‌ها</button>
+</div>
+
+
+    <script src="{% static 'js/address.js' %}"></script>
+
+</body>
+</html>

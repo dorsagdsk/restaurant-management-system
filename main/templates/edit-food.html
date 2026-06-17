@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Edit Food</title>
+    {% load static %}
+
+</head>
+<body>
+    <div class="edit-food-container">
+        <h2>ویرایش اطلاعات غذا</h2>
+        <img id="food-image" alt="تصویر غذا">
+        <form id="edit-food-form">
+            <label for="name">نام غذا:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="category">دسته‌بندی:</label>
+            <input type="text" id="category" name="category" required>
+            
+            <label for="description">توضیحات:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="price">قیمت:</label>
+            <input type="number" id="price" name="price" required>
+            
+            <label for="image">تصویر جدید:</label>
+            <input type="file" id="image" name="image">
+
+            <button type="submit">ذخیره تغییرات</button>
+        </form>
+        <a href="/admin_dashboard/">بازگشت به داشبورد</a>
+    </div>
+    <script src="{% static 'js/edit_food.js' %}" defer></script>
+</body>
+</html>
