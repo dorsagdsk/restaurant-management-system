@@ -1,2 +1,23 @@
-# restaurant-management-system
-A full-stack restaurant management system built with Django, Django REST Framework (REST API), and JavaScript. The application provides role-based access for administrators, employees, and customers, including menu management, online ordering, shopping cart, discount codes, order history, sales reports, and food rating features.
+# Restaurant Management System
+
+## Description
+A full-stack restaurant management system developed using Django, Django REST Framework (REST API), and JavaScript.
+
+## Features
+- User authentication
+- Role-based access (Admin, Employee, Customer)
+- Menu management
+- Shopping cart
+- Online ordering
+- Discount codes with expiration dates
+- Order history
+- Sales reports
+- Food rating system
+
+## Technologies
+- Python
+- Django
+- Django REST Framework
+- JavaScript
+- HTML
+- CSS
